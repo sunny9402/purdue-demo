@@ -1,3 +1,4 @@
 sudo apt-get update
 sudo apt-get install jenkins
 https://github.com/yankils/DevOps/blob/master/jenkins/pipeline-templates/maven-build
+-B package --file pom.xml
