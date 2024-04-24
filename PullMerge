@@ -1,4 +1,4 @@
-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
+
 sudo apt-get update
 sudo apt-get install jenkins
 https://github.com/yankils/DevOps/blob/master/jenkins/pipeline-templates/maven-build
