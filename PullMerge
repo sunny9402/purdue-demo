@@ -14,11 +14,17 @@ LABEL maintainer="deepak@softwareyoga.com"
 
 ADD sample.war /usr/local/tomcat/webapps/
 
-EXPOSE 8080
-CMD ["catalina.sh", "run"]
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: "development"
-  labels:
-    name: "development"
+---
+- hosts: kubernetes
+#  become: ture
+  user: root
+
+  tasks:
+    - name: deploy regapp on kubernetes
+      command: kubectl apply -f regapp-deployment.yml
+
+    - name: create service for regapp
+      command: kubectl apply -f regapp-service.yml
+
+    - name: update deployment with new pods if image updated in docker hub
+      command: kubectl rollout restart deployment.apps/valaxy-regapp
